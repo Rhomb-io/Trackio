@@ -1,0 +1,15 @@
+site_name: Trackio - The IoT device from M2M System Source
+
+pages:
+- Introduction: 'index.md'
+- Getting Started: 'getting-started.md'
+- Configuration: 'configuration.md'
+- Usage: 'usage.md'
+- Protocol: 'protocol.md'
+- Notes: 'notes.md'
+
+theme: readthedocs
+
+markdown_extensions:
+  - admonition
+  - def_list

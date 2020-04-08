@@ -1,0 +1,188 @@
+/** @file */
+
+/**
+ * @brief Default configuration for Trackio.
+ * See docs->configuration for details
+ *
+ * @file static-conf.h
+ * @author Jordi Enguídanos <jenguidanos@rhomb.io>
+ * @date 2019-04-23
+ *
+ * @copyright Copyright M2M System Source (c) 2019
+ */
+
+// Serial Communication
+// -----------------------------------------------------------------------------
+// Modem at socket 1 (RHOMB.IO UART-A)
+#define SerialSim Serial1
+#define SerialSimBauds 38400
+// Debug (RHOMB.IO UART-B)
+#define SerialMon SerialUSB
+#define SerialMonBauds 38400
+// SerialExt
+#define RH_useSerialExt true
+#define RH_serialExtRX INT0
+#define RH_serialExtTX NMI
+#define RH_serialExtBauds 9600
+// enable receive commands from serial debug port
+#define RH_readDebugRX false
+
+// Network & SIM
+// -----------------------------------------------------------------------------
+#define RH_tickTimer 60
+#define RH_aliveTimer 0
+#define RH_keepTCPOpen false
+#define RH_transmitAlways true
+#define RH_transmissionProtocol "TCP"
+#define RH_transmitWithSMS false
+#define RH_SMSNumber ""
+#define RH_useBl false
+#define RH_apn ""
+#define RH_apnUser ""
+#define RH_apnPass ""
+#define RH_remoteServer ""
+#define RH_remotePort ""
+
+// Battery Management
+// -----------------------------------------------------------------------------
+#define RH_battMode 3 // 1=sim868, 2=deimos, 3=halley
+#define RH_requiredVbat 3650
+#define RH_requiredVin 0
+#define RH_requiredVsys5v 0
+#define RH_useBatt true
+#define RH_useVBAT true
+#define RH_useVSYS false
+#define RH_useVIN false
+
+// Pin numbers to read battery status on Deimos with Duino Zero
+// By default the Deimos board doesn't not have ability to read voltage status.
+// This approach requires a special shield attached to the Deimos board on this pins.
+#define VBAT_PIN A3
+#define VSYS_PIN A1
+#define VIN_PIN  A2
+
+// Sleep Modes
+// -----------------------------------------------------------------------------
+#define RH_sleep true // only microcontroller
+#define RH_deepSleep false // micro + sim868
+
+// GPS Modem
+// -----------------------------------------------------------------------------
+#define RH_useGps false
+#define RH_useGpsTime false
+#define RH_useLocation false
+#define RH_useAltitude false
+#define RH_useSpeed false
+#define RH_useCog false
+#define RH_useSats false
+#define RH_useHDOP false
+#define RH_waitForGps 1000
+#define RH_useGpsL86 false
+#define SerialL86 Serial
+
+// GSM Modem
+// -----------------------------------------------------------------------------
+#define RH_useGSMSignal false
+#define RH_useGsmTime false
+#define RH_useGSMLocation false
+
+// Message Log
+// -----------------------------------------------------------------------------
+#define RH_logSize 10
+#define RH_logBytes 150
+#define RH_persistLog true
+#define RH_transmitLogIfFull true
+
+// Sensors
+// -----------------------------------------------------------------------------
+#define RH_useTemp false // requiere module BMEXXX or DHT11/22
+#define RH_useHumidity false // require module BMEXXX
+#define RH_usePressure false // require module BMEXXX
+#define RH_useVOC false // require module BME680 o CCS811
+#define RH_useCO false     // requiere module MQ7
+#define RH_useCO2 false     // requiere module CCS811
+#define RH_useGas false     // require algun modulo gas
+#define RH_useRaining 0 // pin name - analog
+#define RH_useDustSensor false    //detect particles larger than 0.8μm in diameter
+#define RH_useDustSensorILed MOSI //inner LED necessary to read particles
+#define RH_useDustSensorAnalogPin CS1
+#define RH_useMQ7 false   //Carbon Monoxide
+#define RH_useMQ7Pin A5   // pin must be set (A5) if RH_MQ7 is set to true
+#define RH_useMQ135 false //Air Quality (CO, Ammonia, Benzene, Alcohol, smoke)
+#define RH_useMQ135Pin A5 // pin must be set (A5) if RH_MQ135 is true. (CS1 on Halley)
+#define RH_useSonar false //HS-SR04
+#define RH_SonarEchoPin MOSI
+#define RH_SonarTriggerPin MISO
+#define RH_SonarMAX_DIST 400
+#define RH_useBuzzer false
+#define RH_buzzPin SDA
+
+// Activate only one. Modules for temperature, humidity, pression... reading
+#define RH_useBMP280 false // Temp, pression
+#define RH_useBME280 false // Temp, Hum, pression
+#define RH_useBME680 false // Temp, Hum, pression and VOC
+#define RH_useCCS811 false // VOC y CO2, also known as CJMCU-811V1
+#define RH_useSHT20 false // Temp, Hum
+#define RH_useDHT false
+#define RH_useDTHPin MISO
+
+// Interruption PIN
+// -----------------------------------------------------------------------------
+#define RH_useNMIForWakeup true
+
+// GPIOS & LEDS
+// -----------------------------------------------------------------------------
+#define RH_masterGPIO IO6 // ON/OFF button on M2M System Source
+#define RH_useLED true
+#define RH_useRGBLed false
+#define RH_ledPin LED
+
+// Accelerometer
+// -----------------------------------------------------------------------------
+#define RH_useAccel false
+#define RH_useMPU6050 false
+#define RH_MPU6050_ADDRESS 0x68
+#define RH_useLIS2HH12 false
+#define RH_accelTime 3000
+#define RH_transmitAccelNow false
+#define RH_accelGPIO 0
+
+// OBDII / CAN
+// -----------------------------------------------------------------------------
+#define RH_useCAN false
+#define RH_useCANBattery false
+#define RH_useCANSpeed false
+#define RH_useCANRPM false
+#define RH_useCANFuel false
+
+// SDI12
+// -----------------------------------------------------------------------------
+#define RH_useSDI12 false
+#define RH_SDI12Pin IO6
+
+// External RTC
+// -----------------------------------------------------------------------------
+#define RH_useRTC false
+#define RH_useDS3231 false
+
+// System
+// -----------------------------------------------------------------------------
+// You shouldn't change the following if you're not sure what you're doing.
+#define RH_DEBUG 1 // disable (0) will also do RH_readDebugRX to stop working
+#define RH_opmode OP_STARTUP
+#define RH_primaryOpMode OP_AUTO
+#define GSM_PWREN  IO0
+#define GSM_PWRKEY IO1
+#define GPS_EN     IO2
+#define GSM_STATUS IO3
+
+// Buffer sizes. They are used to initialize arrays of chars so their value
+// cannot be modified at runtime (no dynamic memory allocation)
+
+
+// SERIAL_BUFFER_SIZE defined on platformio.ini
+#define UART_BUFFER_SIZE SERIAL_BUFFER_SIZE // UART RX for Simcom and size of var buffer on Trackio.cpp
+#define MAX_PARAMS_PER_CMD 20 // Maximum number of parameters a command can contain
+#define CMD_PARAM_SIZE 30 // Maximum size of each parameter
+#define CMD_BUFFER_SIZE MAX_PARAMS_PER_CMD * CMD_PARAM_SIZE
+#define MAX_MESSAGE_SIZE 240 // The maximum size of a message sent to the server

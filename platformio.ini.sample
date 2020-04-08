@@ -1,0 +1,8 @@
+; See docs -> Getting Started -> Configuring platformio.ini file
+
+[env:zeroUSB]
+platform = atmelsam
+board = zeroUSB
+framework = arduino
+build_flags = -D SERIAL_BUFFER_SIZE=1024
+upload_port = COM1
